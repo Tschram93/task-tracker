@@ -2,7 +2,7 @@ import AddTask from './components/AddTask';
 import Header from './components/Header';
 import Tasks from "./components/Tasks";
 import './App.css';
-import { useState } from "react";
+import { useState, useEffect } from 'react';
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -28,8 +28,10 @@ function App() {
 
 // Add Task
 const addTask = (task) => {
-  console.log(task);
-}
+    const id = Math.floor(Math.random() * 10000) + 1
+    const newTask = { id, ...task }
+    setTasks([...tasks, newTask])
+  }
 
 // Delete Task
 const deleteTask = (id) => {
